@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace VendingMachine_CSPD
+{
+	public class Calculator
+	{
+		double acceptedCoin = 0.50;
+
+		public Calculator()
+		{
+		}
+
+		public double[] ReturnPaymentAndChange(double productPrice)
+		{
+			double cost = productPrice;
+			double coinsRequired = Math.Ceiling(cost / acceptedCoin);
+			double change = (coinsRequired * acceptedCoin) - cost;
+			double[] paymentInfo = { coinsRequired, change };
+
+			Console.Out.WriteLine("Please enter {0} x {1:c} coins", coinsRequired, acceptedCoin);
+			Console.Out.WriteLine("Your change will be {0:c}", change);
+
+			return paymentInfo;
+		}
+	}
+}
